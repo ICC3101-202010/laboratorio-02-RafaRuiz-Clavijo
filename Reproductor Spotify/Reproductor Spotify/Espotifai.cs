@@ -8,7 +8,7 @@ namespace Reproductor_Spotify
 {
     class Espotifai
     {
-        private Cancion[] gestor;
+        public Cancion[] gestor = new Cancion[] { };
 
         public bool AgregarCancion(Cancion cancion)
         {
@@ -33,7 +33,7 @@ namespace Reproductor_Spotify
             }
             if (verificador == 1)
             {
-                gestor.append(cancion);
+                gestor.Append(cancion);
                 return true;
             }
             else
