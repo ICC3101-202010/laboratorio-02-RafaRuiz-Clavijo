@@ -17,6 +17,7 @@ namespace Reproductor_Spotify
             Console.WriteLine(add1);
             bool add2 = g.AgregarCancion(music);
             Console.WriteLine(add2);
+            g.VerCanciones();
         }
     }
 }

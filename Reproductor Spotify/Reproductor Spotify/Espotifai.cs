@@ -42,6 +42,30 @@ namespace Reproductor_Spotify
             }
         }
 
+
+        public void VerCanciones()
+        {
+            int cant_canciones;
+            if (gestor == null)
+            {
+                cant_canciones = 0;
+                Console.WriteLine("No tiene canciones agregadas");
+            }
+            else
+            {
+                cant_canciones = gestor.Length;
+                if (cant_canciones == 0)
+                {
+                    cant_canciones = 0;
+                    Console.WriteLine("No tiene canciones agregadas");
+                }
+                for (int i = 0; i < cant_canciones; i++)
+                {
+                    Console.WriteLine(gestor[i].Informacion());
+                }
+            }
+            
+        }
         
     }
 }
