@@ -54,20 +54,28 @@ namespace Reproductor_Spotify
                     menu.CancionesPorCriterio(caso, valor);
 
                 }
+                else if (opcion == "4")
+                {
+                    Console.WriteLine("Indique el criterio de Playlist");
+                    Console.WriteLine("1) Nombre");
+                    Console.WriteLine("2) Album");
+                    Console.WriteLine("3) Artista");
+                    Console.WriteLine("4) Genero");
+                    string caso = Console.ReadLine();
+                    Console.WriteLine("Indique el dato a buscar: ");
+                    string valor = Console.ReadLine();
+                    Console.WriteLine("Indique el nombre de la nueva playlist: ");
+                    string playlistname = Console.ReadLine();
+                    menu.GenerarPlaylist(caso, valor, playlistname);
+                }
+
+                else if (opcion == "5")
+                {
+                    Console.WriteLine(menu.VerMisPlaylists());
+                }
+
+                Console.WriteLine("");
             }
-
-
-
-            /*
-            Cancion music = new Cancion("Cumbia del coronavirus","Pandemia","El Cumbias","Cumbia");
-            Espotifai g = new Espotifai();
-            Console.WriteLine(music.Informacion());
-            bool add1 = g.AgregarCancion(music);
-            Console.WriteLine(add1);
-            bool add2 = g.AgregarCancion(music);
-            Console.WriteLine(add2);
-            g.VerCanciones();
-            */
         }
     }
 }

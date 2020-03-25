@@ -9,13 +9,19 @@ namespace Reproductor_Spotify
     class Playlist
     {
         private string nameplaylist;
-        Cancion[] listacancion = new Cancion[] { };
+        public Cancion[] listacancion = new Cancion[] { };
 
-        Playlist(string n)
+        public Playlist(string n, Cancion[] l)
         {
             nameplaylist = n;
+            listacancion = l;
+
         }
 
+        public string GetNamePlaylist()
+        {
+            return this.nameplaylist;
+        }
 
     }
 }

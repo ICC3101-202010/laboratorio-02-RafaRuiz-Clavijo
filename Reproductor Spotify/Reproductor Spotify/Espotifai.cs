@@ -9,6 +9,7 @@ namespace Reproductor_Spotify
     class Espotifai
     {
         List<Cancion> gestor = new List<Cancion>();
+        List<Playlist> playing = new List<Playlist>();
 
         public Espotifai()
         {
@@ -28,6 +29,7 @@ namespace Reproductor_Spotify
             if (verificador == 1)
             {
                 gestor.Add(cancion);
+                Console.WriteLine("Cancion agregada con exito");
                 return true;
             }
             else
@@ -41,7 +43,6 @@ namespace Reproductor_Spotify
         public void VerCanciones()
         {
             int cant_canciones = gestor.Count;
-            Console.WriteLine(cant_canciones);
             if (cant_canciones == 0)
             {
                 Console.WriteLine("No tiene canciones agregadas");
@@ -136,7 +137,7 @@ namespace Reproductor_Spotify
 
         }
 
-        /*
+
         public bool GenerarPlaylist(string criterio, string valorCriterio, string nombrePlaylist)
         {
             List<Cancion> buscados = new List<Cancion>();
@@ -193,10 +194,60 @@ namespace Reproductor_Spotify
                         }
                         break;
                     }
-            */
-            
-            
-            
+                default:
+                    {
+                        Console.WriteLine("Ese criterio no existe");
+                        return false;
+                    }
+            }
+            Cancion[] buscadosarray = buscados.ToArray();
+            if (buscadosarray.Length == 0)
+            {
+                Console.WriteLine("No se han encontrado canciones con el criterio asociado");
+                return false;
+            }
+            Playlist p = new Playlist(nombrePlaylist,buscadosarray);
+            int verificador = 1;
+            foreach (Playlist data in playing)
+            {
+                if (nombrePlaylist == data.GetNamePlaylist())
+                {
+                    verificador = 0;
+                }
+            }
+            if (verificador == 1)
+            {
+                playing.Add(p);
+                Console.WriteLine("La lista ha sido agregada con exito");
+                Console.WriteLine("Nombre Playlist: " + nombrePlaylist);
+                for (int i = 0; i < buscadosarray.Length; i++)
+                {
+                    Console.WriteLine("Cancion " + i + ": " + buscadosarray[i].Informacion());
+                }
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Existe una playlist con este nombre");
+                return false;
+            }
+
+        }
         
+        public string VerMisPlaylists()
+        {
+            string datos = "";
+            foreach(Playlist mostrar in playing)
+            {
+                datos += mostrar.GetNamePlaylist() + "\n";
+                Cancion[] mostrarplaylist = mostrar.listacancion;
+                for (int i = 0; i < mostrarplaylist.Length; i++)
+                {
+                    datos += "Cancion " + i + ": " + mostrarplaylist[i].Informacion() + "\n";
+                }
+            }
+
+            return datos;
+        }
     }
 }
