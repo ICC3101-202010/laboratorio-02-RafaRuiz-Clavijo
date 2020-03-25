@@ -8,32 +8,13 @@ namespace Reproductor_Spotify
 {
     class Espotifai
     {
-        public Cancion[] gestor = new Cancion[] { };
+        List<Cancion> gestor = new List<Cancion>();
 
         public bool AgregarCancion(Cancion cancion)
         {
-            int cant_canciones;
-            if (gestor == null)
+            if (!gestor.Contains(cancion))
             {
-                cant_canciones = 0;
-            }
-            else
-            {
-                cant_canciones = gestor.Length;
-            }
-            string[] lista_info = {cancion.GetName(),cancion.GetAlbum(),cancion.GetArtist(),cancion.GetGenero()};
-            int verificador = 1;
-            for (int i = 0; i < cant_canciones; i++)
-            {
-                string[] comp_info = {gestor[i].GetName(), gestor[i].GetAlbum(), gestor[i].GetArtist(), gestor[i].GetGenero()};
-                if (comp_info == lista_info)
-                {
-                    verificador = 0;
-                }
-            }
-            if (verificador == 1)
-            {
-                gestor.Append(cancion);
+                gestor.Add(cancion);
                 return true;
             }
             else
@@ -53,7 +34,7 @@ namespace Reproductor_Spotify
             }
             else
             {
-                cant_canciones = gestor.Length;
+                cant_canciones = gestor.Count;
                 if (cant_canciones == 0)
                 {
                     cant_canciones = 0;
