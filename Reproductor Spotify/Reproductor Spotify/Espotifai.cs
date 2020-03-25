@@ -17,14 +17,22 @@ namespace Reproductor_Spotify
 
         public bool AgregarCancion(Cancion cancion)
         {
-            if (!gestor.Contains(cancion))
+            int verificador = 1;
+            foreach(Cancion comp in gestor)
+            {
+                if (comp.Informacion() == cancion.Informacion())
+                {
+                    verificador = 0;
+                }
+            }
+            if (verificador == 1)
             {
                 gestor.Add(cancion);
                 return true;
-
             }
             else
             {
+                Console.WriteLine("Esta cancion ya se encuentra disponible ");
                 return false;
             }
         }
@@ -127,5 +135,68 @@ namespace Reproductor_Spotify
 
 
         }
+
+        /*
+        public bool GenerarPlaylist(string criterio, string valorCriterio, string nombrePlaylist)
+        {
+            List<Cancion> buscados = new List<Cancion>();
+            switch (criterio)
+            {
+                case "1":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetName() == valorCriterio)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                case "2":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetAlbum() == valorCriterio)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                case "3":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetArtist() == valorCriterio)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                case "4":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetGenero() == valorCriterio)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+            */
+            
+            
+            
+        
     }
 }

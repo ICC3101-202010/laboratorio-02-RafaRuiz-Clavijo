@@ -12,13 +12,15 @@ namespace Reproductor_Spotify
         {
             string opcion = "0";
             Espotifai menu = new Espotifai();
-            while (opcion != "4")
+            while (opcion != "6")
             {
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("1) Ver canciones");
                 Console.WriteLine("2) Agregar canciones");
                 Console.WriteLine("3) Buscar por criterio");
-                Console.WriteLine("4) Salir del programa");
+                Console.WriteLine("4) Nueva Playlist");
+                Console.WriteLine("5) Ver Playlists");
+                Console.WriteLine("6) Salir del programa");
                 opcion = Console.ReadLine();
 
 
@@ -53,6 +55,7 @@ namespace Reproductor_Spotify
 
                 }
             }
+
 
 
             /*
