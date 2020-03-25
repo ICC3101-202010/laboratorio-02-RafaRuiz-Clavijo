@@ -21,7 +21,7 @@ namespace Reproductor_Spotify
             {
                 gestor.Add(cancion);
                 return true;
-                
+
             }
             else
             {
@@ -43,6 +43,89 @@ namespace Reproductor_Spotify
                 Console.WriteLine(gestor[i].Informacion());
             }
         }
-        
+
+        public Cancion[] CancionesPorCriterio(string criterio, string valor)
+        {
+            List<Cancion> buscados = new List<Cancion>();
+
+            switch (criterio)
+            {
+                case "1":
+                    {
+                        foreach(Cancion dato in gestor)
+                        {
+                           if (dato.GetName() == valor)
+                            {
+                                buscados.Add(dato);
+                            }
+                            
+                        }
+                        break;
+                    }
+
+                case "2":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetAlbum() == valor)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                case "3":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetArtist() == valor)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                case "4":
+                    {
+                        foreach (Cancion dato in gestor)
+                        {
+                            if (dato.GetGenero() == valor)
+                            {
+                                buscados.Add(dato);
+                            }
+
+                        }
+                        break;
+                    }
+
+                default:
+                    {
+                        Console.WriteLine("El criterio ingresado no es valido");
+                        return null;
+                    }
+               
+            }
+
+            Cancion[] nuevalistabuscados = new Cancion[buscados.Count];
+            foreach (Cancion res in buscados)
+            {
+                Console.WriteLine(res.Informacion());
+                nuevalistabuscados.Append(res);
+            }
+            if (nuevalistabuscados.Length == 0)
+            {
+                Console.WriteLine("No se encuentra lo que esta buscando");
+            }
+            return nuevalistabuscados;
+            
+
+            
+
+
+        }
     }
 }

@@ -12,12 +12,13 @@ namespace Reproductor_Spotify
         {
             string opcion = "0";
             Espotifai menu = new Espotifai();
-            while (opcion != "3")
+            while (opcion != "4")
             {
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("1) Ver canciones");
                 Console.WriteLine("2) Agregar canciones");
-                Console.WriteLine("3) Salir del programa");
+                Console.WriteLine("3) Buscar por criterio");
+                Console.WriteLine("4) Salir del programa");
                 opcion = Console.ReadLine();
 
 
@@ -38,7 +39,22 @@ namespace Reproductor_Spotify
                     Cancion musica = new Cancion(no, al, ar, ge);
                     menu.AgregarCancion(musica);
                 }
+                else if (opcion == "3")
+                {
+                    Console.WriteLine("Indique el criterio de busqueda: ");
+                    Console.WriteLine("1) Nombre");
+                    Console.WriteLine("2) Album");
+                    Console.WriteLine("3) Artista");
+                    Console.WriteLine("4) Genero");
+                    string caso = Console.ReadLine();
+                    Console.WriteLine("Indique el dato a buscar: ");
+                    string valor = Console.ReadLine();
+                    menu.CancionesPorCriterio(caso, valor);
+
+                }
             }
+
+
             /*
             Cancion music = new Cancion("Cumbia del coronavirus","Pandemia","El Cumbias","Cumbia");
             Espotifai g = new Espotifai();
