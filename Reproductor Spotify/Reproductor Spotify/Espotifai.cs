@@ -10,12 +10,18 @@ namespace Reproductor_Spotify
     {
         List<Cancion> gestor = new List<Cancion>();
 
+        public Espotifai()
+        {
+
+        }
+
         public bool AgregarCancion(Cancion cancion)
         {
             if (!gestor.Contains(cancion))
             {
                 gestor.Add(cancion);
                 return true;
+                
             }
             else
             {
@@ -26,26 +32,16 @@ namespace Reproductor_Spotify
 
         public void VerCanciones()
         {
-            int cant_canciones;
-            if (gestor == null)
+            int cant_canciones = gestor.Count;
+            Console.WriteLine(cant_canciones);
+            if (cant_canciones == 0)
             {
-                cant_canciones = 0;
                 Console.WriteLine("No tiene canciones agregadas");
             }
-            else
+            for (int i = 0; i < cant_canciones; i++)
             {
-                cant_canciones = gestor.Count;
-                if (cant_canciones == 0)
-                {
-                    cant_canciones = 0;
-                    Console.WriteLine("No tiene canciones agregadas");
-                }
-                for (int i = 0; i < cant_canciones; i++)
-                {
-                    Console.WriteLine(gestor[i].Informacion());
-                }
+                Console.WriteLine(gestor[i].Informacion());
             }
-            
         }
         
     }
