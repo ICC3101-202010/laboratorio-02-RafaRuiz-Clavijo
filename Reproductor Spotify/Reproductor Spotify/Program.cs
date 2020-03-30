@@ -15,6 +15,7 @@ namespace Reproductor_Spotify
             while (opcion != "6")
             {
                 Console.WriteLine("MENU PRINCIPAL");
+                Console.WriteLine("Bienvenido a Espotifai!!!");
                 Console.WriteLine("1) Ver canciones");
                 Console.WriteLine("2) Agregar canciones");
                 Console.WriteLine("3) Buscar por criterio");

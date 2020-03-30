@@ -33,7 +33,7 @@ namespace Reproductor_Spotify
 
         public string GetGenero()
         {
-            return this.album;
+            return this.genero;
         }
 
         public string GetArtist()
